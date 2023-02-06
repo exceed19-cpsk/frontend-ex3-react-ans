@@ -48,7 +48,7 @@ function Home() {
             <button
               onClick={() => {
                 setdisplay(0)
-                setclick(false)
+                setclick(-1)
               }}
             >
               pizza
@@ -56,7 +56,7 @@ function Home() {
             <button
               onClick={() => {
                 setdisplay(1)
-                setclick(false)
+                setclick(-1)
               }}
             >
               pasta
@@ -64,7 +64,7 @@ function Home() {
             <button
               onClick={() => {
                 setdisplay(2)
-                setclick(false)
+                setclick(-1)
               }}
             >
               dessert
@@ -72,7 +72,7 @@ function Home() {
             <button
               onClick={() => {
                 setdisplay(3)
-                setclick(false)
+                setclick(-1)
               }}
             >
               drinks
@@ -80,7 +80,7 @@ function Home() {
             <button
               onClick={() => {
                 setdisplay(4)
-                setclick(false)
+                setclick(-1)
               }}
             >
               sauces
@@ -88,7 +88,7 @@ function Home() {
             <button
               onClick={() => {
                 setdisplay(5)
-                setclick(false)
+                setclick(-1)
               }}
             >
               sides
