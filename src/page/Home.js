@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState } from "react"
 import {
   GetPizza,
   GetPasta,
@@ -12,15 +12,10 @@ import BCard from "../component/Bigcard"
 
 function Home() {
   const [display, setdisplay] = useState(0)
-  const [click, setclick] = useState(false)
-  const [idc, setidc] = useState(0)
-  const changeclick = useCallback(
-    (id) => {
-      setclick(!click)
-      setidc(id)
-    },
-    [click]
-  )
+  const [click, setclick] = useState(-1)
+  const changeclick = (id) => {
+    setclick(id)
+  }
   const [menu, setmenu] = useState()
   const [keyword, setkeyword] = useState("")
   const [ignore, setignore] = useState(false)
@@ -32,7 +27,6 @@ function Home() {
     m[3] = await GetDrinks()
     m[4] = await GetSauces()
     m[5] = await GetSides()
-    console.log(m)
     setmenu(m)
   }
   useEffect(() => {
@@ -102,13 +96,13 @@ function Home() {
           </div>
         </div>
         <div className="home-menulist">
-          {!click && (
+          {click === -1 && (
             <>
               {menu?.[display]
                 ?.filter((me) =>
                   me?.name?.toLowerCase().includes(keyword.toLowerCase())
                 )
-                .map((m) => (
+                .map((m, i) => (
                   <Card
                     name={m?.name}
                     image={m?.image}
@@ -116,21 +110,21 @@ function Home() {
                     vege={m?.vegetarian}
                     spic={m?.spicy}
                     id={m?.id}
+                    key={i}
                     changeclick={changeclick}
                   />
                 ))}
             </>
           )}
-          {click && (
+          {click !== -1 && (
             <>
               <BCard
-                name={menu?.[display][idc]?.name}
-                image={menu?.[display][idc]?.image}
-                price={menu?.[display][idc]?.price}
-                vege={menu?.[display][idc]?.vegetarian}
-                spic={menu?.[display][idc]?.spicy}
-                id={menu?.[display][idc]?.id}
-                ing={menu?.[display][idc]?.ingredients}
+                name={menu?.[display][click]?.name}
+                image={menu?.[display][click]?.image}
+                price={menu?.[display][click]?.price}
+                vege={menu?.[display][click]?.vegetarian}
+                spic={menu?.[display][click]?.spicy}
+                ing={menu?.[display][click]?.ingredients}
                 changeclick={changeclick}
               />
             </>

@@ -2,12 +2,12 @@ import { BsCoin } from "react-icons/bs"
 import { GiChiliPepper } from "react-icons/gi"
 import { FaSeedling } from "react-icons/fa"
 
-const BCard = ({ name, image, price, vege, spic, id, ing, changeclick }) => {
+const BCard = ({ name, image, price, vege, spic, ing, changeclick }) => {
   return (
     <div
       className="bcard"
       onClick={() => {
-        changeclick(id)
+        changeclick(-1)
       }}
     >
       <div className="bcard-header">
